@@ -1,0 +1,37 @@
+<form #musicForm="ngForm" (ngSubmit)="Details()">
+    <div class="form-group">
+      <label for="lang">Music Language</label>
+      <input type="text" class="form-control" name="lang" [(ngModel)]="formDetails.musicLanguage" id="lang" #lang="ngModel" required>
+      <p *ngIf="lang.invalid && lang.touched" class="alert alert-danger">Music Language is mandatory</p>
+
+    </div>
+    <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <label class="mr-sm-2" for="catogory">Music Category</label>
+          <select class="custom-select mr-sm-2" id="catogory" name="catogory" [(ngModel)]="formDetails.musicCatogory" #catogory="ngModel" required>
+            <option selected>Choose...</option>
+            <option value="Melody">Melody</option>
+            <option value="Rock">Rock</option>
+            <option value="Soft">Soft</option>
+            <option value="Inspiring">Inspiring</option>
+            <option value="Meditation">Meditation</option>
+
+          </select>
+        </div>
+        <p *ngIf="catogory.invalid && catogory.touched" class="alert alert-danger">Music Catogory is mandatory</p>
+      </div>
+    <div class="form-group">
+        <label for="sing">Singer</label>
+        <input type="text" class="form-control" id="sing" name="sing" [(ngModel)]="formDetails.singer" #sing="ngModel" required>
+        <p *ngIf="sing.invalid && sing.touched" class="alert alert-danger">Singer is mandatory</p>
+
+    </div>
+    <div class="form-group">
+        <label for="mtype">Music Type</label>
+        <input type="text" class="form-control" id="mtype" name="mtype" [(ngModel)]="formDetails.musicType" #mtype="ngModel" required>
+        <p *ngIf="mtype.invalid && mtype.touched" class="alert alert-danger"> MusicType is mandatory</p>
+
+    </div>
+   
+    <button [disabled]="musicForm.invalid" type="submit" class="btn btn-primary">Save</button>
+  </form>
